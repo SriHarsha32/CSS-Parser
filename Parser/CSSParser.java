@@ -1,20 +1,3 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
- * See the NOTICE file distributed with this work for additional
- * information regarding copyright ownership.
- */
-
 package Parser;
 
 import java.util.ArrayList;
@@ -22,12 +5,6 @@ import java.util.List;
 
 import Parser.IncorrectFormatException.ErrorCode;
 import Tester.*;
-
-/**
- * Main logic for the CSS parser.
- * 
- * @author <a href="mailto:christoffer@christoffer.me">Christoffer Pettersson</a>
- */
 
 public final class CSSParser {
 
@@ -98,16 +75,15 @@ public final class CSSParser {
 	private CSSParser() {
 		this.selectorName = "";
 		this.propertyName = "";
-                this.lastSelectorName = "";
+        this.lastSelectorName = "";
 		this.valueName = "";
-		//		this.map = new LinkedHashMap<String, String>();
 		this.values = new ArrayList<PropertyValue>();
 		this.state = State.INSIDE_SELECTOR;
 		this.previousChar = null;
 		this.beforeCommentMode = null;
 		this.selectorNames = new ArrayList<SelLine>();
-                this.line=1;
-                this.column=1;
+        this.line=1;
+        this.column=1;
 	}
 
 	/**
@@ -171,15 +147,11 @@ public final class CSSParser {
 
 	private void parseValue(final Character c) throws IncorrectFormatException {
 
-		// Special case if the value is a data uri, the value can contain a ;
-		//		boolean valueHasDataURI = valueName.toLowerCase().indexOf("data:") != -1;
-
 		if (Chars.SEMI_COLON.equals(c)) {
 
 			// Store it in the values map
 			PropertyValue pv = new PropertyValue(propertyName.trim(), valueName.trim(),line);
 			values.add(pv);
-			//			map.put(propertyName.trim(), valueName.trim());
 			propertyName = "";
 			valueName = "";
 
@@ -256,37 +228,14 @@ public final class CSSParser {
 		} else if (Chars.BRACKET_END.equals(c)) {
 
 			Rule rule = new Rule();
-
-			/*
-			 * Huge logic to create a new rule
-			 */
-
 			for (SelLine s : selectorNames) {
 				Selector selector = new Selector(s.selector.trim(),s.line);
 				rule.addSelector(selector);
 			}
 			selectorNames.clear();
-
-			//Selector selector = new Selector(selectorName.trim(),line);
-			//selectorName = "";
-			//rule.addSelector(selector);
-
-			// Add the property values
 			for (PropertyValue pv : values) {
 				rule.addPropertyValue(pv);
 			}
-
-			//			for (Entry<String, String> entry : map.entrySet()) {
-			//
-			//				String property = entry.getKey();
-			//				String value = entry.getValue();
-			//
-			//				PropertyValue propertyValue = new PropertyValue(property, value);
-			//				rule.addPropertyValue(propertyValue);
-			//
-			//			}
-
-			//			map.clear();
 			values.clear();
 
 			if (!rule.getPropertyValues().isEmpty()) {

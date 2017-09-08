@@ -11,17 +11,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-/**
- *
- * @author cslab2
- */
+
 public class MainParser {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         PropertyValueMatch.initList();
         List<Rule> rules = new ArrayList<Rule>();
         int l=args.length;

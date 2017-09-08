@@ -4,28 +4,19 @@
  * and open the template in the editor.
  */
 package Tester;
-import Parser.IncorrectFormatException;
-import Parser.PropertyValue;
-import Parser.Rule;
-import Parser.Selector;
-import Utilities.LineNumberComponent;
-import Utilities.LineNumberModel;
+import Parser.*;
+import Utilities.*;
 import Validator.PropertyValueMatch;
-import java.awt.Color;
-import java.awt.Rectangle;
+import java.awt.*;
 import javax.swing.*;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.BadLocationException;
 
-/**
- *
- * @author cslab2
- */
 public class ParserGUI extends javax.swing.JFrame {
     JFileChooser fileChooser = new JFileChooser();
     Boolean cv=false;
