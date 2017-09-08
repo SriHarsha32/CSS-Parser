@@ -8,8 +8,8 @@ compare your style sheets to the CSS specifications, helping you find errors, ty
 incorrect uses of CSS, it will also tell you which type of CSS selector is applied at which
 particular line.
 
-CSS is an evolving language, and it is considered by many that “CSS” is a single
+CSS is an evolving language, and it is considered by many that CSS is a single
 grammar (the one defined in the latest specification) with a number of properties and
 acceptable values defined in various profiles. In a future version of this validator, the
-default behavior may be to check style sheets against that latest “CSS grammar” and the
+default behavior may be to check style sheets against that latest CSS grammar and the
 cloud of all standardized CSS properties and values.
